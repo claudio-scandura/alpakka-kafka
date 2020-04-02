@@ -46,6 +46,7 @@ trait KafkaTestKit {
                              valueDeserializer: Deserializer[V]): ConsumerSettings[K, V] =
     ConsumerSettings(system, keyDeserializer, valueDeserializer)
       .withBootstrapServers(bootstrapServers)
+      .withCloseTimeout(Duration.ZERO)
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
   private lazy val committerDefaultsInstance = CommitterSettings(system)
