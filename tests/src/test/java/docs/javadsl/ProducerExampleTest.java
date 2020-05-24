@@ -7,31 +7,37 @@ package docs.javadsl;
 
 import akka.Done;
 import akka.actor.ActorSystem;
-import akka.kafka.*;
+import akka.kafka.KafkaPorts;
+import akka.kafka.ProducerSettings;
 import akka.kafka.javadsl.Consumer;
 import akka.kafka.javadsl.Producer;
-// #testkit
 import akka.kafka.testkit.javadsl.EmbeddedKafkaTest;
-// #testkit
 import akka.kafka.tests.javadsl.LogCapturingExtension;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Source;
-// #testkit
 import akka.testkit.javadsl.TestKit;
-// #testkit
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
-// #testkit
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
-// #testkit
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertEquals;
+
+// #testkit
+// #testkit
+// #testkit
+// #testkit
+// #testkit
+// #testkit
 
 // #testkit
 

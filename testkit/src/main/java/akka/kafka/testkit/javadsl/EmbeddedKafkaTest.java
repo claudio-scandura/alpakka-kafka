@@ -6,6 +6,7 @@
 package akka.kafka.testkit.javadsl;
 
 import akka.actor.ActorSystem;
+import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import net.manub.embeddedkafka.EmbeddedKafka$;
 import net.manub.embeddedkafka.EmbeddedKafkaConfig;
@@ -40,6 +41,10 @@ public abstract class EmbeddedKafkaTest extends KafkaTest {
     super(system, materializer, "localhost:" + kafkaPort);
     this.kafkaPort = kafkaPort;
     this.replicationFactor = replicationFactor;
+  }
+
+  protected EmbeddedKafkaTest(ActorSystem system, int kafkaPort) {
+    this(system, ActorMaterializer.create(system), kafkaPort, 1);
   }
 
   protected EmbeddedKafkaTest(ActorSystem system, Materializer materializer, int kafkaPort) {

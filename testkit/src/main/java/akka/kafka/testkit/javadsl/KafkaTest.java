@@ -11,6 +11,7 @@ import akka.stream.testkit.javadsl.StreamTestKit;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  * JUnit 5 aka Jupiter base-class with some convenience for accessing a Kafka broker. Extending
@@ -34,8 +35,14 @@ public abstract class KafkaTest extends BaseKafkaTest {
     cleanUpAdminClient();
   }
 
+  @BeforeEach
+  public void beforeEach() {
+    super.beforeEach();
+  }
+
   @AfterEach
-  public void checkForStageLeaks() {
+  public void checkForStageLeaks() throws Exception {
+    super.afterEach();
     // you might need to configure `stop-timeout` in your `application.conf`
     // as the default of 30s will fail this
     StreamTestKit.assertAllStagesStopped(materializer);
